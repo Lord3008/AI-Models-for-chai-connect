@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
 class PredictionRequest(BaseModel):
     text: str
@@ -10,3 +10,4 @@ class PredictionResponse(BaseModel):
     result: str
     confidence: float
     model_name: str
+    sources: Optional[List[Dict[str, Any]]] = None

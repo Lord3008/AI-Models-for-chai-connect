@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 from sentence_transformers import SentenceTransformer
@@ -12,9 +11,7 @@ from typing import List, Tuple
 
 st.set_page_config(page_title="YouTube Video Q&A (RAG + Gemini)", layout="wide")
 
-# -------------------------
-# Helper functions
-# -------------------------
+
 def extract_video_id(url: str) -> str:
     """
     Extract YouTube video id from typical URL forms.
@@ -75,7 +72,7 @@ def chunk_text(text: str, chunk_size_words: int = 120, overlap_words: int = 20) 
         j = min(i + chunk_size_words, n)
         chunk = " ".join(tokens[i:j])
         chunks.append(chunk)
-        i = j - overlap_words  # overlap
+        i = j - overlap_words 
         if i < 0:
             i = 0
     return chunks
@@ -92,7 +89,7 @@ def build_faiss_index(embeddings: np.ndarray) -> faiss.Index:
     Build an index for L2 similarity (we assume vectors are normalized so L2 works similarly to cosine).
     """
     dim = embeddings.shape[1]
-    index = faiss.IndexFlatIP(dim)  # inner product on normalized vectors equals cosine similarity
+    index = faiss.IndexFlatIP(dim)
     index.add(embeddings)
     return index
 

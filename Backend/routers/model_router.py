@@ -19,4 +19,5 @@ async def predict(request: PredictionRequest):
 
 @router.get("/models")
 async def list_models():
+    # Return model metadata (name -> info) for clients
     return {"models": model_service.get_available_models()}
