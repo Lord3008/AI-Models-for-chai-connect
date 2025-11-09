@@ -3,7 +3,6 @@ import re
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 from ytrag import get_transcript, split_transcript, build_vector_store, get_retriever, build_prompt
